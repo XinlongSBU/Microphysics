@@ -36,12 +36,12 @@ void add_screening_factor(const int i,
   s.zs13inv = 1.0_rt/s.zs13;
 
   s.zhat  =   std::pow(s.z1 + s.z2, 5.0_rt/3.0_rt)
-            - std::pow(s.z1, 5.0_rt/3.0_rt)
-            - std::pow(s.z2, 5.0_rt/3.0_rt);
+            - std::pow(s.z1       , 5.0_rt/3.0_rt)
+            - std::pow(       s.z2, 5.0_rt/3.0_rt);
 
   s.zhat2 =   std::pow(s.z1 + s.z2, 5.0_rt/12.0_rt)
-            - std::pow(s.z1, 5.0_rt/12.0_rt)
-            - std::pow(s.z2, 5.0_rt/12.0_rt);
+            - std::pow(s.z1       , 5.0_rt/12.0_rt)
+            - std::pow(       s.z2, 5.0_rt/12.0_rt);
 
   s.lzav = (5.0_rt/3.0_rt) * std::log(s.z1 * s.z2 / (s.z1 + s.z2));
 
