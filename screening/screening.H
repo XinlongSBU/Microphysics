@@ -1,7 +1,7 @@
-#include <screen.H>
-
 #ifndef _screening_H_
 #define _screening_H_
+
+#include <screen.H>
 
 void screening_init();
 
