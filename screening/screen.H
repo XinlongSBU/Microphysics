@@ -49,7 +49,7 @@ namespace scrn {
 };
 
 
-AMREX_FORCE_INLINE
+AMREX_GPU_HOST_DEVICE AMREX_FORCE_INLINE
 void
 fill_plasma_state(plasma_state_t& state, const Real temp, const Real dens, Real* y) {
 
