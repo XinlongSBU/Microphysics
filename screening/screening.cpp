@@ -24,21 +24,28 @@ void add_screening_factor(const int i,
 
   BL_ASSERT(i < NSCREEN);
 
-  scn_facs[i].z1 = z1;
-  scn_facs[i].z2 = z2;
-  scn_facs[i].a1 = a1;
-  scn_facs[i].a2 = a2;
+  auto& s = scn_facs[i];
 
-  scn_facs[i].zs13 = std::pow(scn_facs[i].z1 + scn_facs[i].z2, 1.0_rt/3.0_rt);
-  scn_facs[i].zs13inv = 1.0_rt/scn_facs[i].zs13;
-  scn_facs[i].zhat = std::pow(scn_facs[i].z1 + scn_facs[i].z2, 5.0_rt/3.0_rt) -
-                     std::pow(scn_facs[i].z1, 5.0_rt/3.0_rt) - std::pow(scn_facs[i].z2, 5.0_rt/3.0_rt);
-  scn_facs[i].zhat2 = std::pow(scn_facs[i].z1 + scn_facs[i].z2, 5.0_rt/12.0_rt) -
-                     std::pow(scn_facs[i].z1, 5.0_rt/12.0_rt) - std::pow(scn_facs[i].z2, 5.0_rt/12.0_rt);
-  scn_facs[i].lzav = (5.0_rt/3.0_rt) * std::log(scn_facs[i].z1 * scn_facs[i].z2 / (scn_facs[i].z1 + scn_facs[i].z2));
-  scn_facs[i].aznut = std::pow(scn_facs[i].z1 * scn_facs[i].z1 *
-                              scn_facs[i].z2 * scn_facs[i].z2 *
-                              scn_facs[i].a1 * scn_facs[i].a2 /
-                              (scn_facs[i].a1 + scn_facs[i].a2), 1.0_rt/3.0_rt);
+  s.z1 = z1;
+  s.z2 = z2;
+  s.a1 = a1;
+  s.a2 = a2;
+
+  s.zs13 = std::pow(s.z1 + s.z2, 1.0_rt/3.0_rt);
+
+  s.zs13inv = 1.0_rt/s.zs13;
+
+  s.zhat  =   std::pow(s.z1 + s.z2, 5.0_rt/3.0_rt)
+            - std::pow(s.z1, 5.0_rt/3.0_rt)
+            - std::pow(s.z2, 5.0_rt/3.0_rt);
+
+  s.zhat2 =   std::pow(s.z1 + s.z2, 5.0_rt/12.0_rt)
+            - std::pow(s.z1, 5.0_rt/12.0_rt)
+            - std::pow(s.z2, 5.0_rt/12.0_rt);
+
+  s.lzav = (5.0_rt/3.0_rt) * std::log(s.z1 * s.z2 / (s.z1 + s.z2));
+
+  s.aznut = std::pow(s.z1 * s.z1 * s.z2 * s.z2 *
+                     s.a1 * s.a2 / (s.a1 + s.a2), 1.0_rt/3.0_rt);
 }
 
