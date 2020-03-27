@@ -5,6 +5,7 @@
 #include <AMReX_REAL.H>
 #include <AMReX_Array.H>
 
+#include <ArrayUtilities.H>
 #include <extern_parameters.H>
 #include <network.H>
 #include <burn_type.H>
